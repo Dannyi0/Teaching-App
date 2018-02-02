@@ -1,25 +1,14 @@
 {
-  "name": "ptpteaching",
+  "name": "ptp-app",
   "version": "1.0.0",
-  "description": "App that allows peer-to-peer()\u001b[Dface to face) teaching via drawing canvas and voice chat.",
-  "main": "server.js",
+  "description": "Peer to peer teaching app",
+  "main": "app.js",
   "scripts": {
-    "test": "console.log('Server started')"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "node.js",
-    "angularjs",
-    "ionic",
-    "teaching",
-    "peer",
-    "canvas",
-    "voice"
-  ],
   "author": "Daniel Sheppard",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
-    "orbiter": "^1.0.2",
-    "socket.io": "^2.0.4"
+    "express": "^4.16.2"
   }
 }
