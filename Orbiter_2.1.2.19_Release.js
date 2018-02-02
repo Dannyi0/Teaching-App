@@ -419,14 +419,14 @@ net.user1.orbiter.System.prototype.getUPCVersion = function () {
 /** @returns Boolean */
 net.user1.orbiter.System.prototype.isJavaScriptCompatible = function () {
   // Assume non-browser environments can do cross-origin XMLHttpRequests
-  if (this.window == null && typeof XMLHttpsRequest != "undefined") {
+  if (this.window == null && typeof XMLHttpRequest != "undefined") {
     return true;
   }
   
   if (this.window != null) {
     // Standards-based browsers that support cross-origin requests
-    if (typeof XMLHttpsRequest != "undefined" 
-        && typeof new XMLHttpsRequest().withCredentials != "undefined") {
+    if (typeof XMLHttpRequest != "undefined" 
+        && typeof new XMLHttpRequest().withCredentials != "undefined") {
         return true;
     }
   
@@ -479,9 +479,9 @@ net.user1.orbiter.System.prototype.hasHTTPDirectConnection = function() {
   // -In IE, if XDomainRequest is available, and the file wasn't loaded 
   //    locally, then CORS is supported
   // -In non-browser environments, assume cross-origin XMLHttpRequests are allowed
-  if ((typeof XMLHttpsRequest != "undefined" && typeof new XMLHttpsRequest().withCredentials != "undefined")
+  if ((typeof XMLHttpRequest != "undefined" && typeof new XMLHttpRequest().withCredentials != "undefined")
        || (typeof XDomainRequest != "undefined" && this.window != null && this.window.location.protocol != "file:")
-       || (this.window == null && typeof XMLHttpsRequest != "undefined")) {
+       || (this.window == null && typeof XMLHttpRequest != "undefined")) {
     return true;
   } else {
     return false;
@@ -13780,7 +13780,7 @@ net.user1.utils.extend(net.user1.orbiter.Orbiter, net.user1.events.EventDispatch
  */
 net.user1.orbiter.Orbiter.prototype.loadConfig = function (configURL) {
   this.log.info("[ORBITER] Loading config from " + configURL +".");
-  var request = new XMLHttpsRequest();
+  var request = new XMLHttpRequest();
   var self = this;
   
   request.onerror = function () {
@@ -16152,7 +16152,7 @@ net.user1.orbiter.HTTPDirectConnection.prototype.transmitRequest = function (dat
     request.onprogress = function () {}; // Do nothing (required)
   } else {
     // All other standards-based browsers
-    var request = new XMLHttpsRequest();
+    var request = new XMLHttpRequest();
     this.pendingRequests.push(request);
     request.onreadystatechange = function () {
       readystatechangeListener(this, self);
