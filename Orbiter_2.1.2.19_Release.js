@@ -419,14 +419,14 @@ net.user1.orbiter.System.prototype.getUPCVersion = function () {
 /** @returns Boolean */
 net.user1.orbiter.System.prototype.isJavaScriptCompatible = function () {
   // Assume non-browser environments can do cross-origin XMLHttpRequests
-  if (this.window == null && typeof XMLHttpRequest != "undefined") {
+  if (this.window == null && typeof XMLHttpsRequest != "undefined") {
     return true;
   }
   
   if (this.window != null) {
     // Standards-based browsers that support cross-origin requests
-    if (typeof XMLHttpRequest != "undefined" 
-        && typeof new XMLHttpRequest().withCredentials != "undefined") {
+    if (typeof XMLHttpsRequest != "undefined" 
+        && typeof new XMLHttpsRequest().withCredentials != "undefined") {
         return true;
     }
   
@@ -479,9 +479,9 @@ net.user1.orbiter.System.prototype.hasHTTPDirectConnection = function() {
   // -In IE, if XDomainRequest is available, and the file wasn't loaded 
   //    locally, then CORS is supported
   // -In non-browser environments, assume cross-origin XMLHttpRequests are allowed
-  if ((typeof XMLHttpRequest != "undefined" && typeof new XMLHttpRequest().withCredentials != "undefined")
+  if ((typeof XMLHttpsRequest != "undefined" && typeof new XMLHttpsRequest().withCredentials != "undefined")
        || (typeof XDomainRequest != "undefined" && this.window != null && this.window.location.protocol != "file:")
-       || (this.window == null && typeof XMLHttpRequest != "undefined")) {
+       || (this.window == null && typeof XMLHttpsRequest != "undefined")) {
     return true;
   } else {
     return false;
@@ -13780,7 +13780,7 @@ net.user1.utils.extend(net.user1.orbiter.Orbiter, net.user1.events.EventDispatch
  */
 net.user1.orbiter.Orbiter.prototype.loadConfig = function (configURL) {
   this.log.info("[ORBITER] Loading config from " + configURL +".");
-  var request = new XMLHttpRequest();
+  var request = new XMLHttpsRequest();
   var self = this;
   
   request.onerror = function () {
