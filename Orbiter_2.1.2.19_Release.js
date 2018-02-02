@@ -16237,7 +16237,7 @@ net.user1.utils.extend(net.user1.orbiter.SecureHTTPDirectConnection, net.user1.o
 
 /** @private */
 net.user1.orbiter.SecureHTTPDirectConnection.prototype.buildURL = function () {
-  this.url = "https://" + this.host + ":" + this.port;
+  this.url = "http://" + this.host + ":" + this.port;
 };
 
 //==============================================================================
