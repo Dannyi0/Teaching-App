@@ -44,6 +44,7 @@
     firebase.auth().onAuthStateChanged(firebaseUser=> {
         if(firebaseUser.email == txtEmail.value){
             console.log(firebaseUser);
+            window.localStorage.clear();
             window.location.href='room.html';
         }else{
             console.log('Failed to log in');
