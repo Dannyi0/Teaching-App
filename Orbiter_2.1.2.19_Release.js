@@ -16152,7 +16152,7 @@ net.user1.orbiter.HTTPDirectConnection.prototype.transmitRequest = function (dat
     request.onprogress = function () {}; // Do nothing (required)
   } else {
     // All other standards-based browsers
-    var request = new XMLHttpRequest();
+    var request = new XMLHttpsRequest();
     this.pendingRequests.push(request);
     request.onreadystatechange = function () {
       readystatechangeListener(this, self);
