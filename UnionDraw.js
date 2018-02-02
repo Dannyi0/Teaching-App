@@ -9,8 +9,8 @@ var msgManager;
 // list of valid client/server UPC messages. See: http://unionplatform.com/specs/upc/
 var UPC = net.user1.orbiter.UPC;
 // The ID of the room users will join in order to draw together
-var roomID = "examples.uniondraw";
-var url = "tryunion.com";
+var roomID = "1";
+var url = "probstudios.com";
 // A hash of client attribute names used in this application. Each client sets a
 // "thickness" attribute and a "color" attribute, specify the thickness and
 // color of the current line being drawn.
