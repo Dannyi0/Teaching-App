@@ -10,7 +10,7 @@ var msgManager;
 var UPC = net.user1.orbiter.UPC;
 // The ID of the room users will join in order to draw together
 var roomID = "union";
-var url = "probstudios.com";
+var url = "192.30.252.154";
 // A hash of client attribute names used in this application. Each client sets a
 // "thickness" attribute and a "color" attribute, specify the thickness and
 // color of the current line being drawn.
@@ -101,7 +101,7 @@ function init () {
   initOrbiter();
   iPhoneToTop();
  
-  setStatus("Connecting to UnionDraw...");
+  setStatus("Connecting to Server...");
 }
  
 // Set up the drawing canvas
@@ -186,7 +186,7 @@ function readyListener (e) {
  
 // Triggered when the connection to Union Server is closed
 function closeListener (e) {
-  setStatus("Disconnected from UnionDraw.");
+  setStatus("Disconnected from Server.");
   // Stop drawing content sent by other users
   clearInterval(processDrawingCommandsIntervalID);
 }
