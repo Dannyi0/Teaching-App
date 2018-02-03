@@ -33,7 +33,7 @@ const btnLogout = document.getElementById('btnLogout');
         if(firebaseUser.email == txtEmail.value){
             console.log(firebaseUser);
             currentUser = firebaseUser;
-            //window.localStorage.clear();
+            window.localStorage.clear();
             window.location.href='room.html';
         }else{
             console.log('Failed to log in');
