@@ -34,7 +34,7 @@ const btnLogout = document.getElementById('btnLogout');
             console.log(firebaseUser);
             currentUser = firebaseUser;
             window.location.href='room.html';
-            window.localStorage.clear();
+            //window.localStorage.clear();
         }else{
             console.log('Failed to log in');
         }

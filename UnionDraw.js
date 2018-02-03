@@ -9,12 +9,12 @@ var msgManager;
 // list of valid client/server UPC messages. See: http://unionplatform.com/specs/upc/
 var UPC = net.user1.orbiter.UPC;
 // The ID of the room users will join in order to draw together
-var roomID = "";
+var roomID = "prob";
 //Server to connect to
 var url = "tryunion.com";
 //Firebase variables
 var auth = firebase.auth();
-var userStatus; // 10 = student-only account, 11 = teacher & student account
+var userStatus = 10; // 10 = student-only account, 11 = teacher & student account
 // A hash of client attribute names used in this application. Each client sets a
 // "thickness" attribute and a "color" attribute, specify the thickness and
 // color of the current line being drawn.
@@ -96,16 +96,18 @@ var hasTouch = false;
 // INITIALIZATION
 //==============================================================================
 // Trigger init() when the document finishes loading
-window.onload = init;
-//Proceed to check if user has teacher/student access using the user's UID
 if(currentUser){ //If firebase user exists
   userStatus = firebase.database().ref('/users/statuses' + currentUser.userID)
-  window.alert(userStatus);
 }else{ //Otherwise notify client of error and send them back to index.html
-  window.alert("Authentication has expired! Please login again.");
+  console.log("Authentication has expired! Please login again.");
   //window.localStorage.clear();
   //window.location.href="index.html";
 }
+
+window.onload = init;
+console.log(userStatus);
+console.log(currentUser);
+//Proceed to check if user has teacher/student access using the user's UID
 //Check if user is logged in
 // Main initialization function
 function init () {
