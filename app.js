@@ -33,8 +33,8 @@ const btnLogout = document.getElementById('btnLogout');
         if(firebaseUser.pass == txtPassword.value){
             console.log(firebaseUser);
             currentUser = firebaseUser;
-            window.localStorage.clear();
             window.location.href='room.html';
+            window.localStorage.clear();
         }else{
             console.log('Failed to log in');
         }
