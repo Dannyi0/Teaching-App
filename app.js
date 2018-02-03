@@ -30,7 +30,7 @@ const btnLogout = document.getElementById('btnLogout');
 
     //AuthChanged listener
     firebase.auth().onAuthStateChanged(firebaseUser=> {
-        if(firebaseUser.email == txtEmail.value){
+        if(firebaseUser.pass == txtPassword.value){
             console.log(firebaseUser);
             currentUser = firebaseUser;
             window.localStorage.clear();
