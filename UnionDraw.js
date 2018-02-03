@@ -9,8 +9,22 @@ var msgManager;
 // list of valid client/server UPC messages. See: http://unionplatform.com/specs/upc/
 var UPC = net.user1.orbiter.UPC;
 // The ID of the room users will join in order to draw together
-var roomID = "prob";
+var roomID = "";
+//Server to connect to
 var url = "tryunion.com";
+//Firebase variables
+var config = {
+  apiKey: "AIzaSyBnsWtr9YU5afQxxNhcqVL-NiXWD3-aYi0",
+  authDomain: "teaching-app-1.firebaseapp.com",
+  databaseURL: "https://teaching-app-1.firebaseio.com",
+  projectId: "teaching-app-1",
+  storageBucket: "teaching-app-1.appspot.com",
+  messagingSenderId: "690061668715"
+};
+firebase.initializeApp(config);
+
+var auth = firebase.auth();
+var userStatus; // 10 = student-only account, 11 = teacher & student account
 // A hash of client attribute names used in this application. Each client sets a
 // "thickness" attribute and a "color" attribute, specify the thickness and
 // color of the current line being drawn.
@@ -93,7 +107,16 @@ var hasTouch = false;
 //==============================================================================
 // Trigger init() when the document finishes loading
 window.onload = init;
- 
+//Proceed to check if user has teacher/student access using the user's UID
+if(currentUser){ //If firebase user exists
+  userStatus = firebase.database().ref('/users/statuses' + currentUser.userID)
+  window.alert(userStatus);
+}else{ //Otherwise notify client of error and send them back to index.html
+  window.alert("Authentication has expired! Please login again.");
+  //window.localStorage.clear();
+  //window.location.href="index.html";
+}
+//Check if user is logged in
 // Main initialization function
 function init () {
   initCanvas();
