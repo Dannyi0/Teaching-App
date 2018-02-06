@@ -4,6 +4,11 @@ const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('btnLogin');
 const btnSignUp = document.getElementById('btnSignUp');
 const btnLogout = document.getElementById('btnLogout');
+const btnLoginDebug = document.getElementById('btnLoginDebug');
+
+btnLoginDebug.addEventListener('click', e => {
+  window.location = 'room.html';
+});
 
 //Add login event
   btnLogin.addEventListener('click', e => {
